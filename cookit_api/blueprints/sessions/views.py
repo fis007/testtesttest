@@ -19,6 +19,6 @@ def login():
 
         if result:
             token = create_access_token(identity=user.id)
-            return jsonify({"token": token})
+            return jsonify({"auth_token": token})
 
     return jsonify({"Error": "Invalid credentials"})
