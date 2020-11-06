@@ -62,3 +62,9 @@ Deploying to Production
 ensure environment variables are configured appropriately
 migrations will not run in interactive mode when FLASK_ENV is set to 'production'
 It's important to set your own SECRET_KEY environment variable and keep that private.
+
+-------------------------------------------------------------------------------------------------------
+FLASK_APP='start' # based on the name of our entry point script
+FLASK_ENV='development' # use this in development, otherwise 'production' or 'test'
+DATABASE_URL="postgres://localhost:5432/cookit_dev"
+SECRET_KEY=b'\x8fe\xbd\x96*\x0f\xb02wg\x12\xd6\x0c=\xd8e$\xa13\x84n\xf7\xca\xd3\n\xa0q\x8a\x82\xebb\x8f'
