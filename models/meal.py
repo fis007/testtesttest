@@ -4,9 +4,12 @@ from playhouse.postgres_ext import *
 
 class Meal(BaseModel):
     name = pw.CharField(unique=True)
-    ingredients = JSONField()
+    ingredients = pw.TextField()
     prep_time = pw.CharField()
-    cookware = JSONField()
+    url = pw.TextField()
+    cookware = pw.TextField()
+    
+
 
     def validate(self):
         duplicate_meal = Meal.get_or_none(Meal.name == self.name)

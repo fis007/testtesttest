@@ -24,7 +24,7 @@ def login():
     return jsonify({"Error": "Invalid credentials"})
 
 
-@sessions_api_blueprint.route('/login', methods=['POST'])
+@sessions_api_blueprint.route('/login/admin', methods=['POST'])
 def login_admin():
     data = request.json
 
