@@ -36,6 +36,6 @@ def login_admin():
 
         if result:
             token = create_access_token(identity=admin.id)
-            return jsonify({"token": token})
+            return jsonify({"token": token, 'id': admin.id, 'name': admin.name})
 
     return jsonify({"Error": "Invalid credentials"})
