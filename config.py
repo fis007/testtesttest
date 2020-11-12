@@ -5,8 +5,11 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = os.environ.get(
-        'SECRET_KEY') or os.urandom(32)
+    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(32)
+
+    BT_PUBLIC = os.environ.get('BT_PUBLIC')
+    BT_PRIVATE = os.environ.get('BT_PRIVATE')
+    BT_MERCHANT = os.environ.get('BT_MERCHANT')
 
 
 class ProductionConfig(Config):
