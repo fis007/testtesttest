@@ -1,7 +1,23 @@
-import stripe
+import braintree
 from app import app
 
-stripe.api_key = app.config.get("STRIPE_SECRET")
+gateway = braintree.BraintreeGateway(
+    braintree.Configuration(
+        braintree.Environment.Sandbox,
+        merchant_id=app.config.get("BT_MERCHANT"),
+         public_key=app.config.get("BT_PUBLIC"),
+        private_key=app.config.get("BT_PRIVATE")
+    )
+)
 
-def calculate_order_amount(meals):
-  return meals * 150
+def get_client_token():
+    return gateway.client_token.generate()
+
+def create_transaction(amount, nonce):
+  return gateway.transaction.sale({
+    "amount": "10.00",
+    "payment_method_nonce": nonce,
+    "options": {
+      "submit_for_settlement": True
+    }
+})
